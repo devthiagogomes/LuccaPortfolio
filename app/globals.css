@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #fff;
+  color: #111;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.project {
+  width: 100%;
+}
+
+.project-header {
+  padding: 24px;
+}
+
+.project-header h1 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.project-header span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.project-header p {
+  max-width: 500px;
+  margin: 24px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* BLOCKS */
+
+.block {
+  margin: 0;
+}
+
+/* TEXT */
+
+.block-text {
+  padding: 80px 24px;
+}
+
+.block-text p {
+  max-width: 500px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* IMAGE */
+
+.block-image {
+  width: 100%;
+}
+
+.block-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* IMAGE GRID */
+
+.block-image-grid {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.block-image-grid img {
+  width: 100%;
+  height: auto;
 }
