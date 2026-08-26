@@ -2,91 +2,118 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Suisse", "sans-serif";
+  text-transform: lowercase;
 }
 
 html,
 body {
   margin: 0;
-  padding: 0;
+  font-family: "Suisse", sans-serif;
+  font-size: 15px;
+  line-height: 17px;
+  text-transform: lowercase;
 }
-
-body {
-  background: #fff;
-  color: #111;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-.project {
-  width: 100%;
-}
-
-.project-header {
-  padding: 24px;
-}
-
-.project-header h1 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.project-header span {
-  display: block;
-  margin-top: 4px;
-  font-size: 12px;
-}
-
-.project-header p {
-  max-width: 500px;
-  margin: 24px 0 0;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-/* BLOCKS */
-
-.block {
-  margin: 0;
-}
-
-/* TEXT */
-
-.block-text {
-  padding: 80px 24px;
-}
-
-.block-text p {
-  max-width: 500px;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* IMAGE */
-
-.block-image {
-  width: 100%;
-}
-
-.block-image img {
-  width: 100%;
-  height: auto;
-}
-
-/* IMAGE GRID */
-
-.block-image-grid {
+.portfolio {
   display: grid;
-  gap: 8px;
+  grid-template-columns: 45% 55%;
+
+  width: 100%;
+  height: 100vh;
+
+  padding: 5px;
+  overflow: hidden;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo img {
+  display: block;
+
+  max-width: 150px;
+  max-height: 50px;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.right-side {
+  height: 100vh;
+  overflow-y: auto;
+  padding-left: 8px;
+}
+
+.project-link,
+.about-link {
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+
+  background: none;
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+}
+
+.project-year-group {
+  display: grid;
+
+  grid-template-columns: 80px 1fr;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
-.block-image-grid img {
+.project-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  background: none;
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+.project-link.active {
+  border-bottom: 1px solid black;
+}
+
+.project-gallery {
+  width: 100%;
+}
+
+.project-gallery img {
+  display: block;
+
   width: 100%;
   height: auto;
+  max-height: 900px;
+
+  object-fit: contain;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }

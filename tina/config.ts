@@ -31,20 +31,33 @@ export default defineConfig({
 
         fields: [
           {
+            type: "number",
+            name: "order",
+            label: "Order",
+          },
+          {
             type: "string",
             name: "title",
             label: "Title",
             isTitle: true,
             required: true,
           },
-
           {
             type: "string",
             name: "slug",
             label: "Slug",
             required: true,
+            ui: {
+              parse: (value) => {
+                return value
+                  ?.toLowerCase()
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "")
+                  .replace(/[^a-z0-9-]+/g, "-")
+                  .replace(/-+/g, "-");
+              },
+            },
           },
-
           {
             type: "number",
             name: "year",
@@ -61,58 +74,48 @@ export default defineConfig({
           },
 
           {
-            type: "object",
-            name: "blocks",
-            label: "Content",
+            type: "rich-text",
+            name: "body",
+            label: "Text",
+          },
+          {
+            type: "image",
+            name: "images",
+            label: "Images",
             list: true,
-
-            templates: [
-              {
-                name: "text",
-                label: "Text",
-                fields: [
-                  {
-                    type: "string",
-                    name: "text",
-                    label: "Text",
-                    ui: {
-                      component: "textarea",
-                    },
-                  },
-                ],
-              },
-
-              {
-                name: "image",
-                label: "Image",
-                fields: [
-                  {
-                    type: "image",
-                    name: "image",
-                    label: "Image",
-                  },
-                ],
-              },
-
-              {
-                name: "imageGrid",
-                label: "Image Grid",
-                fields: [
-                  {
-                    type: "image",
-                    name: "images",
-                    label: "Images",
-                    list: true,
-                  },
-
-                  {
-                    type: "number",
-                    name: "columns",
-                    label: "Columns",
-                  },
-                ],
-              },
-            ],
+          },
+        ],
+      },
+      {
+        name: "siteSettings",
+        label: "Site Settings",
+        path: "content/settings",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Site Name",
+            required: true,
+          },
+          {
+            type: "image",
+            name: "logo",
+            label: "Logo",
+          },
+        ],
+      },
+      {
+        name: "about",
+        label: "About",
+        path: "content/about",
+        format: "md",
+        fields: [
+          {
+            type: "rich-text",
+            name: "body",
+            label: "About text",
+            isBody: true,
           },
         ],
       },
