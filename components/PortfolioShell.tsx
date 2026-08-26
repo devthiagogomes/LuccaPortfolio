@@ -56,6 +56,20 @@ export function PortfolioShell({ projects, settings, about }: Props) {
       const sections =
         container.querySelectorAll<HTMLElement>("[data-section]");
 
+      const isAtBottom =
+        container.scrollTop + container.clientHeight >=
+        container.scrollHeight - 2;
+
+      if (isAtBottom) {
+        const lastSection = sections[sections.length - 1];
+
+        if (lastSection?.dataset.section) {
+          setActiveSection(lastSection.dataset.section);
+        }
+
+        return;
+      }
+
       let currentSection = "about";
 
       sections.forEach((section) => {
@@ -96,9 +110,16 @@ export function PortfolioShell({ projects, settings, about }: Props) {
 
     if (!element) return;
 
-    element.scrollIntoView({
+    const containerTop = container.getBoundingClientRect().top;
+    const elementTop = element.getBoundingClientRect().top;
+
+    const offset = 5;
+
+    const target = container.scrollTop + elementTop - containerTop - offset;
+
+    container.scrollTo({
+      top: target,
       behavior: "smooth",
-      block: "start",
     });
   }
 

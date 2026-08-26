@@ -1,15 +1,33 @@
 @import "tailwindcss";
 
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
-  font-family: "Suisse", "sans-serif";
+  font-family: "Satoshi", sans-serif;
   text-transform: lowercase;
 }
 
 html,
 body {
   margin: 0;
-  font-family: "Suisse", sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size: 15px;
   line-height: 17px;
   text-transform: lowercase;
