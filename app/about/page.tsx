@@ -10,7 +10,15 @@ export default async function AboutPage() {
     getAbout(),
   ]);
 
+  const validProjects = projects.filter(
+    (project): project is NonNullable<typeof project> => project != null,
+  );
+
   return (
-    <PortfolioShell projects={projects} settings={settings} about={about} />
+    <PortfolioShell
+      projects={validProjects}
+      settings={settings}
+      about={about}
+    />
   );
 }

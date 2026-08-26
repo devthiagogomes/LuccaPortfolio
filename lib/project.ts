@@ -6,13 +6,14 @@ export async function getProjects() {
   const projects =
     result.data.projectConnection.edges
       ?.map((edge) => edge?.node)
-      .filter(Boolean) ?? [];
+      .filter(
+        (project): project is NonNullable<typeof project> => project != null,
+      ) ?? [];
 
   return projects.sort((a, b) => {
-    return (a?.order ?? 999) - (b?.order ?? 999);
+    return (a.order ?? 999) - (b.order ?? 999);
   });
 }
-
 export async function getProjectBySlug(slug: string) {
   const projects = await getProjects();
 
