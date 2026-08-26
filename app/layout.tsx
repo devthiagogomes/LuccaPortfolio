@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { getSiteSettings } from "@/lib/settings";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  return {
+    title: "lucca reis / arte e pesquisa",
 
-export const metadata: Metadata = {
-  title: "lucca reis / arte e pesquisa",
-  description: "",
-};
+    icons: settings?.logo
+      ? {
+          icon: settings.logo,
+        }
+      : undefined,
+  };
+}
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="pt-BR">
+      <body>{children}</body>
     </html>
   );
 }
